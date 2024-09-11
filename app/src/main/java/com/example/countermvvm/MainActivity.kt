@@ -16,6 +16,7 @@ import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.lifecycle.viewmodel.compose.viewModel
@@ -26,7 +27,7 @@ class MainActivity : ComponentActivity() {
         super.onCreate(savedInstanceState)
         setContent {
 
-            val viewModel: CounterMVVM = viewModel()
+            val viewModel: CounterViewModel = viewModel()
 
             CounterMVVMTheme {
                 // A surface container using the 'background' color from the theme
@@ -42,13 +43,16 @@ class MainActivity : ComponentActivity() {
 }
 
 @Composable
-fun TheCounterApp(viewModel: CounterMVVM){
+fun TheCounterApp(viewModel: CounterViewModel){
 
     Column(modifier = Modifier.fillMaxSize(),
         verticalArrangement = Arrangement.Center,
         horizontalAlignment = Alignment.CenterHorizontally,
         ) {
-        Text(viewModel.count.value.toString(), fontSize = 30.sp)
+        Text(viewModel.count.value.toString(),
+            fontSize = 30.sp,
+            fontWeight = FontWeight.Bold,
+            )
         Row(modifier = Modifier.padding(top = 8.dp).fillMaxWidth(),
             horizontalArrangement = Arrangement.SpaceEvenly,
             ){
